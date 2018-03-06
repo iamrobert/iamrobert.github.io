@@ -1,0 +1,80 @@
+{% assign collections = site.collections | sort: 'position' %}
+{% for collection in collections %}
+
+{% if collection.label != "posts" %}
+
+<div class="relative px-3 h-12 top-menu-link flex items-center xl:hover:bg-white xl:hover:text-black nav-top-link">
+    <span class="font-light hover:text-orange tracking-wide">{{ collection.title[page.lang] }}
+        <svg height="16"
+             class="align-middle menu-down-caret"
+             viewBox="0 0 24 24"
+             width="24"
+             xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+            <path d="M0-.75h24v24H0z" fill="none"/>
+        </svg>
+    </span>
+
+    {% assign used_categories = "" | split: "" %}
+    {% assign articles=site[collection.label] | where:"lang",page.lang %}
+
+    <div class="dropdown-list bg-white shadow z-50 flex xl:absolute p-4 w-full">
+    <ul class="overflow-auto static w-full list-reset">
+        <li class="flex w-full justify-between hover:text-red inner-menu-close mb-4 text-grey-darkest mb-4 pb-4 xl:hidden justify-between items-center border-b border-grey-lighter">
+            <span>Close {{ collection.title[page.lang] }} menu</span>
+            <span class="font-bold">&times;</span>
+        </li>
+        {% for articles in articles %}
+            {% assign parts = articles.path | split: "/" %}
+            {% assign num_parts = articles.path | split: "/" | size %}
+            {% if num_parts == 2 %}
+
+        <li>
+            <a class="w-full block py-2 hover:text-orange text-black xl:text-grey-dark no-underline" href="{{ articles.url | relative_url }}">
+                {{ articles.title | escape }}
+            </a>
+        </li>
+
+            {% else %}
+                {% assign sub_level = parts[1] %}
+                {% assign matched = used_categories | where_exp:"item", "item == sub_level" | size %}
+                {% if matched == 0 %}
+                    {% assign all_articles = site[collection.label] | where: "lang", page.lang %}
+
+        <li>
+            <p class="py-2 pl-2 font-black bg-grey-lighter text-grey-darkest pl-2">
+                {{ sub_level | replace: "_", " " | capitalize }}
+            </p>
+            <ul class="sub_level_list list-reset pl-4">
+
+                    {% for art in all_articles %}
+                        {% assign parts = art.path | split: "/" %}
+                        {% assign num_parts = art.path | split: "/" | size %}
+                        {% if num_parts == 3 and parts[1] == sub_level %}   
+
+                <li>
+                    <a class="w-full block py-2 hover:text-orange text-black xl:text-grey-dark no-underline" href="{{ art.url | relative_url }}">
+                        {{ art.title | escape }}
+                    </a>
+                </li>
+
+                        {% endif %}
+                    {% endfor %}
+
+            </ul>
+        </li>
+
+                    {% assign used_categories = used_categories | push: sub_level %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+    </div>
+    
+</div>
+
+    {% endif %}
+{% endfor %}
+
