@@ -490,6 +490,7 @@ pre[class*="language-"] {
       animation: appear 0.5s ease-in; }
   .pk-lightbox .close-lightbox {
     position: absolute;
+	z-index: 5;
     top: 0;
     right: 20px;
     font-size: 3rem;
