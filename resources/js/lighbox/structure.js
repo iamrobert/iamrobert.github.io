@@ -1,5 +1,7 @@
 export default `
-        <div class="close-lightbox">&times;</div>
+        <div class="close-lightbox">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="24px"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+        </div>
         <button class="lightbox-arrow next text-white hover:text-orange">
         <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 30 30">
 	<path d="M10,26c-0.256,0-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L18.586,15L9.293,5.707

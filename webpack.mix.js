@@ -24,7 +24,11 @@ mix
       path.join(__dirname, "_includes/*.html")
     ],
     extensions: ["html", "js", "md", "vue"],
-    whiteList: [".article-content blockquote.success h5", "h-8"],
+    whiteList: [
+      ".article-content blockquote.success h5",
+      "h-8",
+      "html.stuck .page-header"
+    ],
     whitelistPatterns: [
       /^\.article-content.*/,
       /blockquote$/,

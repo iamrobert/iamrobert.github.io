@@ -12,8 +12,27 @@ svg {
   width: 100%;
 }
 
-body.stuck {
+html.stuck {
   overflow: hidden;
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .page-header {
+    position: fixed;
+  }
+
+  .accordian-icon {
+    z-index: -1;
+  }
+}
+
+body.stuck {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
 }
 
 @import "top_menu";

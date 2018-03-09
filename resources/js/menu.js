@@ -11,12 +11,12 @@ export default {
   },
 
   openNavbar() {
-    document.body.classList.add("stuck");
+    document.querySelector("html").classList.add("stuck");
     this.els.navbar.classList.add("show");
   },
 
   closeNavbar() {
-    document.body.classList.remove("stuck");
+    document.querySelector("html").classList.remove("stuck");
     this.closeCurrentlyOpenInnerMenus();
     this.els.navbar.classList.remove("show");
   },

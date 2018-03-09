@@ -1,3 +1,7 @@
+.no-js .dropdown-list {
+  display: none;
+}
+
 .dropdown-list {
   top: 100%;
   left: 50%;
@@ -25,7 +29,7 @@
   transform-origin: left top;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1290px) {
   .top-menu-link:hover {
     &:after {
       transition: 0.4s ease-in-out;

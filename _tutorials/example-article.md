@@ -2,7 +2,8 @@
 layout: article
 lang: en
 ref: tut-1
-description: This is my awesome writeup of this fantastic thing
+title: Helpful Example Article
+description: A very helpfukl article about a Peakboard product or service
 ---
 
 Die OPC-UA-Datenquelle reiht sich nahtlos in die Reihe von Datenquellen zur Maschinen-Kommunikation ein, so wie auch der direkte Zugriff auf die Siemens S7, MQTT oder den Azure IoT Hub. Im hier beschriebenen Fall stellt Peakboard einen OPC-Client dar, der sich auf einen OPC-Server verbindet. Das Beispiel in diesem Artikel kann einfach mit dem generischen OPC-UA-Server nachvollzogen werden, den Sie auf opcfoundation.org nach der Registrierung herunterladen können:

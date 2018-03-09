@@ -93,3 +93,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - resources
+  - docs

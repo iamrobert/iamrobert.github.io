@@ -9,3 +9,7 @@ if (document.querySelector(".article-content")) {
 
 Menu.init();
 Accordian.init();
+
+window.addEventListener("load", () => {
+  document.querySelector("html").classList.remove("no-js");
+});
