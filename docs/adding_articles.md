@@ -1,4 +1,4 @@
-# Adding articles and content
+# Adding articles to Categories
 
 Articles are added by creating a new file in the respective directory. For example, to add a new artilce to the "Data Sources" category, just add the file to the `_data_sources` directory.
 
@@ -18,6 +18,7 @@ Each file you create for an article should contain "front matter", which is just
 ---
 layout: article // for video tutorials use video_article
 title: The article title // if this is missing, the filename will be used to create a title
+description: A brief description of the article (around 160 characters)
 lang: en // the language code (e.g. german = de)
 ref: [unique id for article] // translations will have the same id
 ---
@@ -27,7 +28,8 @@ ref: [unique id for article] // translations will have the same id
 This front matter must contain the following fields:
 
 * layout - Tells the site what page template to use. Use `article` for all artilces and `video_article` for video tutorials
-* title - this is used as the articles title
+* title - this is used as the article's title
+* description - a description of the article, important for search engines.
 * lang - the language code for the articles language (either en or de for now)
 * ref - a unique id for the article. It must be unique for the whole category, even if in a nested directory. Can be a string or number/int. This ref is used to identify translations, and translated articles should share the same ids.
 * youtube_id - **[Video tutorials only]** the id of the video on youtube.

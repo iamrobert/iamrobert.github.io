@@ -3,7 +3,9 @@ export default {
     trigger: document.querySelector(".menu-trigger"),
     navbar: document.querySelector(".navbar"),
     categories: [].slice.call(document.querySelectorAll(".nav-top-link")),
-    last_menu_item: document.querySelector(".top-menu-link:last-child")
+    sub_categories: [].slice.call(document.querySelectorAll(".has-submenu")),
+    last_menu_item: document.querySelector(".top-menu-link:last-child"),
+    html: document.querySelector("html")
   },
 
   isNavbarOpen() {
@@ -11,13 +13,12 @@ export default {
   },
 
   openNavbar() {
-    document.querySelector("html").classList.add("stuck");
+    this.els.html.classList.add("stuck");
     this.els.navbar.classList.add("show");
   },
 
   closeNavbar() {
-    document.querySelector("html").classList.remove("stuck");
-    this.closeCurrentlyOpenInnerMenus();
+    this.closeAllMenus();
     this.els.navbar.classList.remove("show");
   },
 
@@ -25,35 +26,46 @@ export default {
     this.isNavbarOpen() ? this.closeNavbar() : this.openNavbar();
   },
 
-  exposeInnerMenu(inner_menu) {
-    inner_menu.classList.add("expose");
+  handleCategoryToggle(category, ev) {
+    this.categoryMenuIsOpen(category)
+      ? this.hideCategoryMenu(category)
+      : this.showCategoryMenu(category);
   },
 
-  closeCurrentlyOpenInnerMenus() {
-    const inner_menus = [].slice.call(
-      this.els.navbar.querySelectorAll(".dropdown-list.expose")
+  categoryMenuIsOpen(category) {
+    return category.classList.contains("exposed");
+  },
+
+  showCategoryMenu(category) {
+    this.closeAllMenus();
+    this.els.html.classList.add("stuck");
+    category.classList.add("exposed");
+  },
+
+  hideCategoryMenu(category) {
+    this.closeAllMenus();
+    category.classList.remove("exposed");
+  },
+
+  closeAllMenus() {
+    this.resetOuterMenu();
+    this.closeSubmenus();
+    this.els.html.classList.remove("stuck");
+  },
+
+  resetOuterMenu() {
+    this.els.categories.forEach(cat => cat.classList.remove("exposed"));
+  },
+
+  exposeSubmenu(submenu) {
+    submenu.classList.add("exposed");
+  },
+
+  closeSubmenus() {
+    const open_subs = [].slice.call(
+      document.querySelectorAll(".sub_level_list.exposed")
     );
-    inner_menus.forEach(menu => menu.classList.remove("expose"));
-  },
-
-  handleInnerMenuClose(ev, close_button) {
-    close_button.parentNode.parentNode.classList.remove("expose");
-    ev.stopPropagation();
-  },
-
-  checkLatMenuItemHasSpace() {
-    const rect = this.els.last_menu_item.getBoundingClientRect();
-    const body_width = document.querySelector("body").getBoundingClientRect()
-      .width;
-    const dropdown = this.els.last_menu_item.querySelector(".dropdown-list");
-    const dropdown_width = dropdown.getBoundingClientRect().width;
-
-    const available_space = Math.floor(body_width - rect.right);
-    const needed_space = Math.floor((dropdown_width - rect.width) / 2);
-
-    if (available_space <= needed_space) {
-      dropdown.classList.add("righty");
-    }
+    open_subs.forEach(sub => sub.classList.remove("exposed"));
   },
 
   init() {
@@ -67,15 +79,34 @@ export default {
       }
 
       const close_button = category_menu.querySelector(".inner-menu-close");
-      close_button.addEventListener("click", ev =>
-        this.handleInnerMenuClose(ev, close_button)
-      );
+      close_button.addEventListener("click", ev => {
+        ev.stopPropagation();
+        this.resetOuterMenu();
+      });
 
-      category.addEventListener("click", () =>
-        this.exposeInnerMenu(category_menu)
-      );
+      category.addEventListener("click", ev => {
+        if (category.querySelector(".dropdown-list").contains(ev.target)) {
+          return;
+        }
+        this.handleCategoryToggle(category);
+      });
     });
 
-    this.checkLatMenuItemHasSpace();
+    this.els.sub_categories.forEach(sub_cat => {
+      sub_cat.addEventListener("click", ev => {
+        ev.stopPropagation();
+        this.exposeSubmenu(sub_cat.querySelector(".sub_level_list"));
+      });
+    });
+
+    const close_sub_buttons = [].slice.call(
+      document.querySelectorAll(".sub-level-list-close")
+    );
+    close_sub_buttons.forEach(btn =>
+      btn.addEventListener("click", ev => {
+        ev.stopPropagation();
+        this.closeSubmenus();
+      })
+    );
   }
 };

@@ -43,15 +43,15 @@
     transform: translate3d(200vw, 0, 0);
     height: calc(100vh - 6rem);
     z-index: 50;
-    background: #b8c2cc;
-
-    &.expose {
-      transform: translate3d(0, 0, 0);
-    }
+    background: #606f7b;
 
     .inner-menu-close {
       display: flex;
     }
+  }
+
+  .navbar .nav-top-link.exposed .dropdown-list {
+    transform: translate3d(0, 0, 0);
   }
 
   .navbar.show {
