@@ -3,12 +3,14 @@
 }
 
 .dropdown-list {
-  top: 6rem;
-  left: 0;
-  transform: rotateX(90deg);
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0) rotateX(90deg);
   transition: 0.3s ease-in-out;
   transform-origin: left top;
-  height: calc(100vh - 6rem);
+  width: 300px;
+  overflow: hidden;
+  max-height: calc(100vh - 6rem);
 }
 
 .top-menu-link:after {
@@ -24,8 +26,9 @@
 }
 
 .navbar .sub_level_list {
-  transform: translate3d(100vw, 0, 0);
+  transform: translate3d(100%, 0, 0);
   transition: 0.3s ease-in-out;
+  overflow-y: auto;
 
   &.exposed {
     transform: translate3d(0, 0, 0);
@@ -34,7 +37,7 @@
 
 @media screen and (min-width: 1290px) {
   .top-menu-link.exposed .dropdown-list {
-    transform: rotateX(0deg);
+    transform: translate3d(-50%, 0, 0) rotateX(0deg);
     z-index: 999;
   }
 

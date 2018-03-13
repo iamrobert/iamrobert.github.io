@@ -19,7 +19,7 @@
     {% assign used_categories = "" | split: "" %}
     {% assign articles=site[collection.label] | where:"lang",page.lang %}
 
-    <div class="dropdown-list bg-grey-darker z-50 flex fixed p-4 w-screen">
+    <div class="dropdown-list bg-grey-darker z-50 flex absolute p-4">
     <ul class="overflow-auto static w-full list-reset">
         <li class="flex w-full hover:text-orange inner-menu-close mb-4 text-grey-darkest mb-4 pb-4 xl:hidden items-center border-b border-grey-lighter">
             {% include left_arrow.svg %}
@@ -47,7 +47,7 @@
                 {{ sub_level | replace: "_", " " | capitalize }}
                 {% include right_arrow.svg %}
             </p>
-            <ul class="sub_level_list list-reset pl-4 absolute pin-t pin-b pin-r w-screen bg-grey-dark">
+            <ul class="sub_level_list list-reset pl-4 absolute pin-t pin-b pin-r w-full bg-grey-dark">
                 <li class="sub-level-list-close flex items-center text-white hover:text-orange cursor-pointer mb-4 mt-3">
                     {% include left_arrow.svg %}
                     {{ collection.label | capitalize }}
