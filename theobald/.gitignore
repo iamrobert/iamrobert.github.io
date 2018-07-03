@@ -1,9 +1,0 @@
-_site
-.sass-cache
-.jekyll-metadata
-.DS_Store
-/node_modules
-/.idea
-/.vscode
-npm-debug.log
-yarn-error.log

@@ -1,21 +1,33 @@
----
-layout: base
----
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}" class="">
 
-{% include page_header.html lang_selector="home" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Theobald Software | {{ page.title | default: ''}}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
 
-{% assign home = site.data.trans.home_page %}
-<section class="bg-grey-lightest py-8 px-8">
-    <h3 class="font-normal text-4xl text-black">{{ home.banner.heading[page.lang] }}</h3>
-    <p class="my-3">Here you will find tutorials and articles on using Peakboard</p>
-    <p class="my-3">For technical problems contact technical support:</p>
-    <p class="my-3 font-bold">
-        <a class="no-underline hover:opacity-75 text-orange" href="https://peakboard.zendesk.com/">Support-System</a>
-    </p>
-    <p class="my-3 font-bold">
-        <a class="no-underline hover:opacity-75 text-orange" href="mailto:support@peakboard.com">support@peakboard.com</a>
-    </p>
-</section>
-<div class="accordian-nav my-6 max-w-xl mx-auto">
-    {% include accordian.html %}
-</div>
+<body>
+    {% include main-header.html %}
+    <div class="main-container">
+        {{ content }}
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.9/metisMenu.min.js"></script>
+    <script>
+        $(function () {
+            $('.metis-folder').metisMenu({
+                toggle: true
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

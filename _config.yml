@@ -1,4 +1,19 @@
-title: "Peakborad Help"
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Theobald Software
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -16,81 +31,23 @@ plugins:
   - jekyll-feed
 
 collections:
-  tutorials:
+  ERPConnect:
     output: true
-    icon: question.svg
-    position: 1
-    title:
-      en: Tutorials
-      de: Tutorials
-
-  video_tutorials:
+  
+  XtractIS:
     output: true
-    icon: video.svg
-    position: 0
-    title:
-      en: Video Tutorials
-      de: Video Tutorials
 
-  data_sources:
-    output: true
-    icon: database.svg
-    position: 2
-    title:
-      en: "Data sources"
-      de: "Dataquellen"
-
-  controls:
-    output: true
-    icon: parameters-v.svg
-    position: 3
-    title:
-      en: "Controls"
-      de: "Controls"
-
-  misc:
-    output: true
-    icon: plus-c.svg
-    position: 4
-    title:
-      en: "Misc"
-      de: "Misc"
-
-  administration:
-    output: true
-    icon: id-card.svg
-    position: 5
-    title:
-      en: "Administration"
-      de: "Administration"
-
-  scripting:
-    output: true
-    icon: browser.svg
-    position: 6
-    title:
-      en: "Scripting"
-      de: "Scripting"
-
-  peakboardio:
-    output: true
-    icon: star.svg
-    position: 7
-    title:
-      en: "Peakboard.io"
-      de: "Peakboard.io"
-
+sass:
+  style: compact # possible values: nested expanded compact compressed
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - resources
-  - docs
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
