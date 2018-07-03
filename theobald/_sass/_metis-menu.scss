@@ -1,0 +1,63 @@
+.sidebar {
+  padding: 1rem 0 0 1rem;
+  height: 98vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+.metis-folder {
+  padding-left: 0;
+
+  font-family: "apercu";
+  max-width: 300px;
+}
+
+.metis-folder ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+}
+.metis-folder,
+.metis-folder ul {
+  list-style: none;
+}
+.metis-folder li {
+  position: relative;
+}
+.metis-folder li a {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #373d3f;
+  text-decoration: none;
+  outline: 0 none;
+
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.metis-folder li a .fa-fw {
+  margin-left: -20px;
+  color: #8c979a;
+}
+.metis-folder ul:before {
+  position: absolute;
+  border-left: 1px dotted #8c979a;
+  content: "";
+  width: 15px;
+  top: 25px;
+  left: 3px;
+  bottom: 17px;
+}
+.metis-folder ul > li:before {
+  position: absolute;
+  border-top: 1px dotted #8c979a;
+  content: "";
+  width: 15px;
+  top: 13px;
+  left: -15px;
+}
+li.active > a > span.fa-folder-o:before {
+  content: "\f115" !important;
+}

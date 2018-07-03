@@ -1,0 +1,6 @@
+{% assign language = "/" | append: page.lang | append: "/" %}
+{% assign eng_pages = site.XtractIS | where_exp: "doc", "doc.path contains language" %}
+{% assign subcategories = eng_pages | group_by_exp: "doc", "doc.path | split: '/' | slice: 2, 1 | join: '/'" %}
+<ul class="metis-folder metismenu">
+    {% include menu_level.html groups=subcategories level=3 title="XtraxtIS" %}
+</ul>

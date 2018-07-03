@@ -1,0 +1,62 @@
+<div class="site-header">
+    <div class="header-left">
+    <img src="{{ 'assets/images/logos/theobald_logo.svg' | relative_url }}" height="80px" class="logo">
+    <div class="product-nav">
+        <div class="product-nav-inner">
+            <div>
+                <a href="/ERPConnect/{{ page.lang | default: 'de' }}">
+                    {% include erp_connect_logo.svg %} ERPConnect
+                </a>
+                <a href="/XtractIS/{{ page.lang | default: 'de' }}">
+                    {% include xtract_is_logo.svg %} Xtract IS
+                </a>
+                <a href="">
+                    {% include xtract_rs_logo.svg %} Xtract RS
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    {% include erp_connect_services_logo.svg %} ERPConnect Services
+                </a>
+                <a href="">
+                    {% include xtract_universal_logo.svg %} Xtract Universal
+                </a>
+                <a href="">
+                    {% include board_connector_logo.svg %} Board Connector
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    {% include xtract_alteryx_logo.svg %} Xtract Alteryx
+                </a>
+                <a href="">
+                    {% include yunio_logo.svg %} Yunio
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="lang-bar">
+        <div class="lang-select">
+            {% capture other_lang %}
+                {% if page.lang == 'en' %}
+                    de
+                {% endif %}
+                {% if page.lang == 'de' %}
+                    en
+                {% endif %}
+            {% endcapture %}
+            {% assign prep = page.url | split: page.lang %}
+            {% assign other_lang = other_lang | strip %}
+            {% assign trans_link = prep | first | append: other_lang %}
+            {% if page.lang == 'de' %}
+            <span>DE</span>
+            <a class="active" href="{{ trans_link }}">EN</a>
+            {% endif %}
+            {% if page.lang == 'en' %}
+            <span>EN</span>
+            <a class="active" href="{{ trans_link }}">DE</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

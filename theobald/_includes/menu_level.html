@@ -1,0 +1,29 @@
+<li>
+{% assign index_group = include.groups | where_exp: "group", "group.name contains 'index.'" | first %}
+{% if index_group %}
+{% assign index_page = index_group.items | first %}
+<a href="{{ index_page.url | relative }}"><span class="fa fa-fw fa-folder-o"></span>{{ include.title }}</a>
+{% else %}
+{% assign title_parts_count = include.title | split: '-' | size %}
+{% assign dir_title = include.title | split: '-' | slice: 1, (title_parts_count - 1) | join: ' '  %}
+<a href="#"><span class="fa fa-fw fa-folder-o"></span>{{ dir_title }}</a>
+{% endif %}
+
+<ul>
+{% for group in include.groups %}
+{% assign group_size = group.items | size %}
+{% if group.name contains '.' %}
+    {% unless group.name contains 'index.' %}
+        {% assign doc = group.items | first %}
+        <li><a href="{{ doc.url }}"><span class="fa fa-fw fa-file"></span>{{ doc.title }}</a></li>    
+    {% endunless %}
+    
+{% else %}
+    {% assign next_level = include.level | plus: 1 %}
+    {% assign new_groups = group.items | group_by_exp: "doc", "doc.path | split: '/' | slice: 0, next_level | join: '/'" %}
+    {% assign group_name = group.name | split: '/' |  last %}
+        {% include menu_level.html groups=new_groups level=next_level title=group_name %}
+{% endif %}
+{% endfor %}
+</ul>
+</li>

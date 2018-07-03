@@ -1,0 +1,72 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  background: white;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, $off-white 90%, transparent 90%);
+  }
+
+  .logo {
+    padding: 1rem;
+    border-bottom: 1px solid $grey_lightest;
+  }
+
+  .product-nav {
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.1);
+    transform: skewX(-10deg);
+    background: white;
+    height: calc(80px + 2rem);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: $text-sm;
+  }
+
+  .product-nav-inner {
+    transform: skewX(10deg);
+    margin: auto;
+    display: flex;
+
+    & > div {
+      margin: 0 1rem;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      color: $grey_darkest;
+
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .lang-bar {
+    align-self: flex-start;
+    flex: 1;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid $off_white;
+
+    .lang-select {
+      text-align: center;
+
+      a {
+        color: $grey_darkest;
+        text-decoration: none;
+
+        &.active {
+          color: $brand_red;
+        }
+      }
+    }
+  }
+}
